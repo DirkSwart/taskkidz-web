@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskKidz — Chores made rewarding</title>
+<meta name="description" content="TaskKidz turns everyday chores into rewarding challenges. Kids stay motivated, parents stay in control. A family chore-and-rewards app.">
+<style>
+  :root{
+    --orange:#FF7A00; --orange-d:#E86E00; --purple:#7B3FBF; --deep:#3A2A5C;
+    --ink:#2C2C2A; --muted:#6A6862; --cream:#FBF7F1; --card:#FFFFFF; --line:#ECE6DC;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+  nav .brand{font-weight:800;font-size:24px;letter-spacing:-.5px;color:var(--ink);text-decoration:none}
+  nav .brand span{color:var(--orange)}
+  nav .brand span.k{color:var(--purple)}
+  nav a.nav-link{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px;margin-left:22px}
+  nav a.nav-link:hover{color:var(--ink)}
+
+  /* hero */
+  .hero{text-align:center;padding:40px 0 20px}
+  .hero .logo-img{width:min(440px,86%);height:auto;margin:0 auto 10px;display:block}
+  .hero h1{
+    font-size:clamp(30px,5vw,46px);font-weight:800;letter-spacing:-1.2px;
+    line-height:1.12;margin:14px auto 16px;max-width:16ch
+  }
+  .hero h1 .hl{color:var(--orange)}
+  .hero p.sub{font-size:clamp(16px,2.4vw,20px);color:var(--muted);max-width:44ch;margin:0 auto 28px}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:16px;
+    padding:15px 30px;border-radius:14px;text-decoration:none;transition:transform .12s ease
+  }
+  .btn:active{transform:scale(.97)}
+  .btn.primary{background:var(--orange);color:#fff;box-shadow:0 6px 0 var(--orange-d)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--orange-d)}
+  .btn.ghost{background:#fff;color:var(--deep);border:2px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--purple);color:var(--purple)}
+
+  /* how it works */
+  section.how{padding:56px 0 40px}
+  .eyebrow{
+    text-align:center;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+    color:var(--orange);margin-bottom:8px
+  }
+  section.how h2{text-align:center;font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-.6px;margin-bottom:36px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;
+    position:relative;
+  }
+  .step .ico{
+    width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+    font-size:26px;margin-bottom:16px
+  }
+  .step:nth-child(1) .ico{background:#FFE9D3}
+  .step:nth-child(2) .ico{background:#EFE2FB}
+  .step:nth-child(3) .ico{background:#D9F3E2}
+  .step h3{font-size:18px;font-weight:800;margin-bottom:7px;color:var(--deep)}
+  .step p{color:var(--muted);font-size:15px}
+  .step .n{
+    position:absolute;top:22px;right:24px;font-size:14px;font-weight:800;color:var(--line)
+  }
+
+  /* value strip */
+  section.value{
+    background:var(--deep);color:#fff;border-radius:28px;margin:24px 0;padding:44px 34px;text-align:center
+  }
+  section.value h2{font-size:clamp(23px,3.3vw,30px);font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+  section.value h2 .o{color:var(--orange)}
+  section.value p{color:#D9CFE8;max-width:52ch;margin:0 auto;font-size:16.5px}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px;text-align:left}
+  .vitem{background:rgba(255,255,255,.06);border-radius:16px;padding:20px}
+  .vitem .vh{font-weight:800;margin-bottom:5px;font-size:15.5px}
+  .vitem .vp{color:#C9BEDD;font-size:14px}
+
+  /* download */
+  section.download{text-align:center;padding:52px 0 30px}
+  section.download h2{font-size:clamp(24px,3.5vw,32px);font-weight:800;letter-spacing:-.6px;margin-bottom:10px}
+  section.download p{color:var(--muted);margin-bottom:26px}
+
+  footer{border-top:1px solid var(--line);margin-top:30px;padding:30px 0;text-align:center;color:var(--muted);font-size:14px}
+  footer a{color:var(--purple);font-weight:600;text-decoration:none}
+  footer .links{margin-bottom:10px}
+  footer .links a{margin:0 10px}
+
+  @media(max-width:720px){
+    .steps{grid-template-columns:1fr}
+    .vgrid{grid-template-columns:1fr}
+    section.value{padding:34px 22px;border-radius:22px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="index.html">Task<span class="k">Kidz</span></a>
+    <div>
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="nav-link" href="privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <!-- Replace src with your hosted logo URL (or keep a local file next to this page) -->
+    <img class="logo-img" src="email-header.jpg" alt="TaskKidz" onerror="this.style.display='none'">
+    <h1>Chores that kids <span class="hl">actually want</span> to do</h1>
+    <p class="sub">TaskKidz turns everyday chores into rewarding challenges. Kids stay motivated — parents stay in control.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#download">Get TaskKidz</a>
+      <a class="btn ghost" href="#how">See how it works</a>
+    </div>
+  </header>
+
+  <section class="how" id="how">
+    <div class="eyebrow">How it works</div>
+    <h2>Three simple steps</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <div class="ico">✏️</div>
+        <h3>Parents create tasks</h3>
+        <p>Set up a chore in seconds — pick a reward, and assign it to a kid.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <div class="ico">🏃</div>
+        <h3>Kids complete &amp; earn</h3>
+        <p>Kids see what to do, snap a photo as proof, and tap Done.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <div class="ico">✅</div>
+        <h3>Approve &amp; reward</h3>
+        <p>Review, approve, and the reward lands in their balance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="value">
+    <h2>Motivation for kids. <span class="o">Control for parents.</span></h2>
+    <p>TaskKidz makes chores feel like a game for kids, while giving parents a clear, simple way to manage it all.</p>
+    <div class="vgrid">
+      <div class="vitem"><div class="vh">🔒 Privacy first</div><div class="vp">No location tracking, no ads. We collect only a name and email — nothing more about your kids.</div></div>
+      <div class="vitem"><div class="vh">🗑️ You're in control</div><div class="vp">Delete your family and all data any time, right from the app. Photos auto-delete daily.</div></div>
+      <div class="vitem"><div class="vh">👨‍👩‍👧 Built for families</div><div class="vp">Kids sign in with a simple PIN — no email or account details needed for children.</div></div>
+    </div>
+  </section>
+
+  <section class="download" id="download">
+    <h2>Ready to get started?</h2>
+    <p>Download TaskKidz and set up your family in minutes.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#">Google Play</a>
+      <a class="btn ghost" href="#">App Store</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:support@taskkidz.com">Contact</a>
+    </div>
+    TaskKidz by Biddio Pty Ltd · Perth, WA
+  </div>
+</footer>
+</body>
+</html>

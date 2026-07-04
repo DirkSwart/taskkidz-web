@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset your password — TaskKidz</title>
+<style>
+  :root{--orange:#FF7A00;--orange-d:#E86E00;--purple:#7B3FBF;--deep:#3A2A5C;--ink:#2C2C2A;--muted:#6A6862;--cream:#FBF7F1;--line:#ECE6DC}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;-webkit-font-smoothing:antialiased
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:24px;max-width:440px;width:100%;
+    padding:38px 30px;text-align:center;box-shadow:0 10px 40px rgba(58,42,92,.07)
+  }
+  .brand{font-weight:800;font-size:26px;letter-spacing:-.5px;margin-bottom:24px}
+  .brand span{color:var(--orange)}.brand span.k{color:var(--purple)}
+  .fox{width:96px;height:96px;border-radius:24px;background:#EFE2FB;display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 20px}
+  h1{font-size:23px;font-weight:800;letter-spacing:-.4px;margin-bottom:10px}
+  p{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:8px}
+  .btn{
+    display:inline-block;background:var(--orange);color:#fff;font-weight:800;font-size:16px;
+    padding:15px 30px;border-radius:14px;text-decoration:none;margin:22px 0 6px;box-shadow:0 5px 0 var(--orange-d);
+    transition:transform .12s ease
+  }
+  .btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.97)}
+  .note{font-size:13.5px;color:var(--muted);margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+  .note strong{color:var(--ink)}
+  a.support{color:var(--purple);font-weight:600;text-decoration:none}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">Task<span class="k">Kidz</span></div>
+    <div class="fox">🦊</div>
+
+    <div id="trying">
+      <h1>Opening TaskKidz…</h1>
+      <p>We're taking you to the app to reset your password.</p>
+    </div>
+
+    <div id="fallback" class="hidden">
+      <h1>Open this on your phone</h1>
+      <p>Password resets happen inside the TaskKidz app. Please open this link on the phone or tablet that has TaskKidz installed.</p>
+      <a class="btn" id="retry" href="#">Open TaskKidz</a>
+      <div class="note">
+        Don't have the app on this device? Open the reset email on your phone instead, or contact
+        <a class="support" href="mailto:support@taskkidz.com">support@taskkidz.com</a> for help.
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Preserve the auth fragment/query from the reset link and hand it to the app's deep link.
+  // Supabase implicit-flow reset links carry tokens in the URL fragment (#...).
+  (function () {
+    var frag = window.location.hash || '';
+    var query = window.location.search || '';
+    // The app registered scheme: choreapp://reset-password
+    var appUrl = 'choreapp://reset-password' + query + frag;
+
+    var trying = document.getElementById('trying');
+    var fallback = document.getElementById('fallback');
+    var retry = document.getElementById('retry');
+    retry.setAttribute('href', appUrl);
+
+    // Attempt to open the app immediately.
+    try { window.location.href = appUrl; } catch (e) {}
+
+    // If we're still here after a moment, the app isn't installed / didn't open — show the fallback.
+    setTimeout(function () {
+      trying.classList.add('hidden');
+      fallback.classList.remove('hidden');
+    }, 1600);
+  })();
+</script>
+</body>
+</html>
