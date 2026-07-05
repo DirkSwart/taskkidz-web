@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email confirmed — TaskKidz</title>
+<style>
+  :root{--orange:#FF7A00;--orange-d:#E86E00;--purple:#7B3FBF;--deep:#3A2A5C;--ink:#2C2C2A;--muted:#6A6862;--cream:#FBF7F1;--line:#ECE6DC}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;-webkit-font-smoothing:antialiased
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:24px;max-width:440px;width:100%;
+    padding:34px 30px 38px;text-align:center;box-shadow:0 10px 40px rgba(58,42,92,.07)
+  }
+  .logo{width:min(300px,90%);height:auto;display:block;margin:0 auto 6px;border-radius:16px}
+  .logo-fallback{font-weight:800;font-size:26px;letter-spacing:-.5px;margin-bottom:20px}
+  .logo-fallback span.k{color:var(--purple)}
+  .tick{
+    width:64px;height:64px;border-radius:50%;background:#EAF7EE;color:#1E7E45;
+    display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;margin:8px auto 18px
+  }
+  h1{font-size:23px;font-weight:800;letter-spacing:-.4px;margin-bottom:10px}
+  p{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:8px}
+  .note{font-size:13.5px;color:var(--muted);margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .note strong{color:var(--ink)}
+  a.support{color:var(--purple);font-weight:600;text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="email-header.jpg" alt="TaskKidz"
+         onerror="this.style.display='none';document.getElementById('brandFallback').style.display='block'">
+    <div class="logo-fallback" id="brandFallback" style="display:none">Task<span class="k">Kidz</span></div>
+
+    <div class="tick">&#10003;</div>
+    <h1>Email confirmed</h1>
+    <p>Your email address has been updated. You're all set.</p>
+    <p>Open the TaskKidz app on your phone and sign in with your new email address.</p>
+
+    <div class="note">
+      Didn't request this change? Contact
+      <a class="support" href="mailto:support@taskkidz.com">support@taskkidz.com</a> right away.
+    </div>
+  </div>
+</body>
+</html>
